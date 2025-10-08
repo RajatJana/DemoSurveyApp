@@ -1,0 +1,7 @@
+com\demo\model\LoginRequest.class
+com\demo\DemoApplication.class
+com\demo\config\WebConfig.class
+com\demo\controller\DashboardController.class
+com\demo\model\DashboardData.class
+com\demo\model\DashboardData$ChartData.class
+com\demo\controller\AuthController.class

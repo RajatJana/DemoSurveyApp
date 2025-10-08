@@ -1,0 +1,70 @@
+<div class="dashboard-container">
+  <div class="welcome-section">
+    <h1>{{ dashboardData?.welcomeMessage }}</h1>
+    <p>Welcome back, <strong>{{ currentUser?.name }}</strong>!</p>
+  </div>
+
+  <div *ngIf="isLoading" class="loading">Loading dashboard data...</div>
+
+  <div *ngIf="!isLoading" class="dashboard-content">
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon users">👥</div>
+        <div class="stat-info">
+          <h3>{{ dashboardData?.totalUsers?.toLocaleString() }}</h3>
+          <p>Total Users</p>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon revenue">💰</div>
+        <div class="stat-info">
+          <h3>${{ dashboardData?.revenue?.toLocaleString() }}</h3>
+          <p>Revenue</p>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon sales">📈</div>
+        <div class="stat-info">
+          <h3>{{ stats?.totalSales?.toLocaleString() }}</h3>
+          <p>Total Sales</p>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon rate">📊</div>
+        <div class="stat-info">
+          <h3>{{ stats?.conversionRate }}%</h3>
+          <p>Conversion Rate</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chart Section -->
+    <div class="chart-section">
+      <h2>Monthly Performance</h2>
+      <div class="chart-container">
+        <div class="chart-bar" 
+             *ngFor="let data of dashboardData?.chartData"
+             [style.height]="data.value / 3 + 'px'">
+          <span class="bar-value">{{ data.value }}</span>
+          <span class="bar-label">{{ data.month }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Activities -->
+    <div class="activities-section">
+      <h2>Recent Activities</h2>
+      <div class="activities-list">
+        <div *ngFor="let activity of dashboardData?.recentActivities" 
+             class="activity-item">
+          <span class="activity-dot"></span>
+          <span class="activity-text">{{ activity }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
